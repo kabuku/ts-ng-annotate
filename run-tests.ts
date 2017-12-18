@@ -1,5 +1,4 @@
-// MIT licensed, see LICENSE.ng-annotate file
-// Copyright (c) 2013-2016 Olov Lassus <olov.lassus@gmail.com>
+// Inspired by https://github.com/olov/ng-annotate/blob/c45120972445ba5027ba96688a7ef175a7a83338/run-tests.js
 import * as diff from "diff";
 import { readFileSync } from "fs";
 import * as glob from "glob";
