@@ -32,7 +32,7 @@ function getAnnotatingEdits(sourceFile: ts.SourceFile): ts.TextChange[] {
         }
         if ((ts.isArrowFunction(node) || ts.isFunctionExpression(node)) && hasNgInjectPrologue(node.body)) {
             edits.push(...getEditsForFunction(node));
-        } else if (ts.isClassDeclaration(node)) {
+        } else if (ts.isClassLike(node)) {
             edits.push(...getEditsForConstructor(node));
         }
         ts.forEachChild(node, visit);
@@ -89,7 +89,7 @@ function getEditsForFunction(node: ts.SignatureDeclarationBase): ts.TextChange[]
     ];
 }
 
-function getEditsForConstructor(node: ts.ClassDeclaration): ts.TextChange[] {
+function getEditsForConstructor(node: ts.ClassLikeDeclaration): ts.TextChange[] {
     let injectNode: ts.PropertyDeclaration;
     let parameterNames: string[];
     for (const classElement of node.members) {
